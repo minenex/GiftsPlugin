@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'io.papermc.paperweight.userdev' version '1.7.1' apply false
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'org.giftsplugin'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://repo.papermc.io/repository/maven-public/' }
+}
+
+dependencies {
+    compileOnly 'io.papermc.paper:paper-api:1.21.8-R0.1-SNAPSHOT'
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 21
+}
+
+shadowJar {
+    archiveClassifier.set('')
+    archiveFileName.set("GiftsPlugin-${version}.jar")
+}
+
+build {
+    dependsOn shadowJar
+}
+
+processResources {
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}

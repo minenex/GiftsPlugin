@@ -1,0 +1,22 @@
+name: GiftsPlugin
+version: ${version}
+main: org.giftsplugin.GiftsPlugin
+api-version: '1.21.8'
+authors:
+  - manlixlol(minenex)
+description: Плагин для размещения и поиска подарков с наградами
+commands:
+  gifts:
+    description: Главная команда подарков
+    usage: /gifts <give|supergift|info>
+    permission: gifts.use
+permissions:
+  gifts.use:
+    description: Разрешает использовать команды подарков
+    default: op
+  gifts.admin:
+    description: Разрешает управлять подарками
+    default: op
+  gifts.teleport:
+    description: Разрешает телепортацию к подаркам
+    default: op

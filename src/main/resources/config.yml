@@ -1,0 +1,138 @@
+config-version: 1
+
+messages:
+  prefix: "🎀 &#FB0000&lП&#FC2B2B&lо&#FC5555&lд&#FD8080&lа&#FEAAAA&lр&#FED5D5&lк&#FFFFFF&lи &e↣ "
+
+  gift-received: "&aВы получили подарок! Используйте его, чтобы установить."
+  super-gift-received: "&6Вы получили &eзолотой подарок&6! Используйте его, чтобы установить."
+  gift-placed: "&aПодарок &e#{id} &aуспешно установлен!"
+  gift-found: "&aПоздравляем! Вы нашли подарок и получили награду!"
+  super-gift-found: "&6Поздравляем! Вы нашли &eзолотой подарок &6и получили отличную награду!"
+  already-found: "&cЭтот подарок уже был найден!"
+  gift-removed: "&cПодарок &e#{id} &cбыл удалён."
+  no-permission: "&cУ вас нет разрешения на это действие."
+  config-reloaded: "&aКонфигурация перезагружена!"
+  teleported: "&aВы телепортированы к подарку &e#{id}"
+  player-only: "&cЭта команда доступна только для игроков!"
+
+  gui-title: "🎀 &#FB0000&lП&#FC2B2B&lо&#FC5555&lд&#FD8080&lа&#FEAAAA&lр&#FED5D5&lк&#FFFFFF&lи"
+  no-gifts: "&cПодарков пока нет."
+
+  help-header: "&6=== 🎁 Gifts Plugin ==="
+  help-give: "&e/gifts give &7- Получить обычный подарок"
+  help-supergift: "&e/gifts supergift &7- Получить золотой подарок"
+  help-info: "&e/gifts info &7- Открыть меню подарков"
+  help-reload: "&e/gifts reload &7- Перезагрузить конфигурацию"
+
+sounds:
+  place:
+    enabled: true
+    sound: BLOCK_NOTE_BLOCK_BELL
+    volume: 1.0
+    pitch: 1.2
+  find:
+    enabled: true
+    sound: ENTITY_PLAYER_LEVELUP
+    volume: 1.0
+    pitch: 1.0
+  find-super:
+    enabled: true
+    sound: UI_TOAST_CHALLENGE_COMPLETE
+    volume: 1.0
+    pitch: 1.0
+  break:
+    enabled: true
+    sound: BLOCK_GLASS_BREAK
+    volume: 1.0
+    pitch: 0.8
+  menu-open:
+    enabled: true
+    sound: BLOCK_CHEST_OPEN
+    volume: 0.7
+    pitch: 1.2
+  menu-click:
+    enabled: true
+    sound: UI_BUTTON_CLICK
+    volume: 0.5
+    pitch: 1.0
+  receive:
+    enabled: true
+    sound: ENTITY_ITEM_PICKUP
+    volume: 1.0
+    pitch: 1.5
+  teleport:
+    enabled: true
+    sound: ENTITY_ENDERMAN_TELEPORT
+    volume: 0.8
+    pitch: 1.2
+  error:
+    enabled: true
+    sound: ENTITY_VILLAGER_NO
+    volume: 0.8
+    pitch: 1.0
+
+gui:
+  rows: 6
+  filler-material: RED_STAINED_GLASS_PANE
+  filler-name: " "
+
+  gift-display:
+    normal-name: "&#FBFBFB&lП&#FCD1D1&lо&#FCA7A7&lд&#FD7E7E&lа&#FE5454&lр&#FE2A2A&lо&#FF0000&lк &7#{id}"
+    super-name: "&6✦ Золотой подарок &7#{id}"
+
+    lore:
+      - ""
+      - "&7Координаты: &f{coords}"
+      - "&7Мир: &f{world}"
+      - "&7Установил: &f{placed_by}"
+      - ""
+      - "{found_status}"
+      - ""
+      - "&bНажмите, чтобы телепортироваться"
+
+    found-status: "&aНайден: &f{found_by}"
+    not-found-status: "&eЕще не найден"
+
+gift-item:
+  normal:
+    material: PLAYER_HEAD
+    texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNmNlZjlhYTE0ZTg4NDc3M2VhYzEzNGE0ZWU4OTcyMDYzZjQ2NmRlNjc4MzYzY2Y3YjFhMjFhODViNyJ9fX0="
+    name: "&#FBFBFB&lП&#FCD1D1&lо&#FCA7A7&lд&#FD7E7E&lа&#FE5454&lр&#FE2A2A&lо&#FF0000&lк"
+    lore:
+      - "&7Поставьте этот подарок"
+      - "&7чтобы другие игроки могли его найти!"
+  super:
+    material: PLAYER_HEAD
+    texture: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNDczYmE1NDZhNjJiMzJjNTE1Mzc2ZGQ3ZjNjOTJmYjM1YTMzNTI0ZjMyM2JiYjJiNTk3OGUzOGM3ZTVmNjJhIn19fQ=="
+    name: "&6✦ Золотой подарок"
+    lore:
+      - "&7Поставьте этот золотой подарок"
+      - "&7чтобы другие игроки могли его найти!"
+      - "&eСодержит улучшенные награды!"
+
+rewards:
+  normal:
+    items:
+      - material: DIAMOND
+        amount: 1
+    effects: []
+  super:
+    items:
+      - material: DIAMOND
+        amount: 64
+    effects:
+      - type: REGENERATION
+        duration: 600
+        amplifier: 1
+
+firework:
+  power: 1
+  colors:
+    - RED
+    - YELLOW
+    - ORANGE
+  fade-colors:
+    - WHITE
+  type: BALL_LARGE
+  flicker: true
+  trail: true
